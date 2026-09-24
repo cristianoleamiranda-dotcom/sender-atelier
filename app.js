@@ -260,3 +260,34 @@ if (!reduce) {
   band.prepend(v);
   new IntersectionObserver((es) => { es[0].isIntersecting ? v.play().catch(() => {}) : v.pause(); }, { threshold: 0.3 }).observe(band);
 })();
+
+/* ---------- v1.1: tilt 3D de puntero (lenguaje awwwards-3d) ---------- */
+(() => {
+  if (reduce || !matchMedia('(pointer: fine)').matches) return;
+  $$('[data-tilt]').forEach((el) => {
+    gsap.to(el, { rotationX: 0, rotationY: 0, duration: 0.01 });
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      gsap.to(el, { rotationY: x * 8, rotationX: -y * 8, transformPerspective: 1000, duration: 0.6, ease: 'power2.out' });
+    });
+    el.addEventListener('pointerleave', () => {
+      gsap.to(el, { rotationX: 0, rotationY: 0, duration: 1.1, ease: 'elastic.out(1, 0.45)' });
+    });
+  });
+})();
+
+/* ---------- v1.1: despliegue keynote con perspectiva en stacks ---------- */
+if (!reduce) {
+  $$('.prod').forEach((prod) => {
+    const st = $('.pstack', prod);
+    if (!st) return;
+    gsap.fromTo(st, { rotationX: 10, scale: 0.94 }, {
+      rotationX: 0, scale: 1, transformPerspective: 1100, ease: 'none',
+      scrollTrigger: { trigger: prod, start: 'top 88%', end: 'top 38%', scrub: 0.6 },
+    });
+  });
+  const cb = $('.cover-bg');
+  if (cb) gsap.fromTo(cb, { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '.cat-cover', start: 'top bottom', end: 'bottom top', scrub: 0.7 } });
+}

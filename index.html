@@ -19,6 +19,8 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"}}</script>
+  <script type="module" src="./bg3d.js" defer></script>
   <script type="module" src="./app.js" defer></script>
   <script type="application/ld+json">
   { "@context": "https://schema.org", "@type": "Organization", "name": "Sender (BIS SpA)",
@@ -148,22 +150,22 @@
     </header>
     <div class="caps">
       <article class="cap rv">
-        <div class="cap-media"><img src="./assets/cap-critical.jpg" alt="Sistemas críticos" loading="lazy"><span class="cap-rec mono">REC</span></div>
+        <div class="cap-media" data-tilt><img src="./assets/cap-critical.jpg" alt="Sistemas críticos" loading="lazy"><span class="cap-rec mono">REC</span></div>
         <h3 data-i18n="cap.1.h">Sistemas críticos</h3>
         <p data-i18n="cap.1.p">Cadenas completas de transmisión con redundancia y monitoreo remoto.</p>
       </article>
       <article class="cap rv">
-        <div class="cap-media"><img src="./assets/cap-transmission.jpg" alt="Transmisión de alta potencia" loading="lazy"><span class="cap-rec mono">REC</span></div>
+        <div class="cap-media" data-tilt><img src="./assets/cap-transmission.jpg" alt="Transmisión de alta potencia" loading="lazy"><span class="cap-rec mono">REC</span></div>
         <h3 data-i18n="cap.2.h">Transmisión de alta potencia</h3>
         <p data-i18n="cap.2.p">Etapas de potencia AM/FM eficientes, estables y mantenibles en terreno.</p>
       </article>
       <article class="cap rv">
-        <div class="cap-media"><img src="./assets/cap-rf.jpg" alt="Ingeniería RF" loading="lazy"><span class="cap-rec mono">REC</span></div>
+        <div class="cap-media" data-tilt><img src="./assets/cap-rf.jpg" alt="Ingeniería RF" loading="lazy"><span class="cap-rec mono">REC</span></div>
         <h3 data-i18n="cap.3.h">Ingeniería RF</h3>
         <p data-i18n="cap.3.p">Diseño de antenas, líneas y adaptación de impedancia a medida del sitio.</p>
       </article>
       <article class="cap rv">
-        <div class="cap-media"><img src="./assets/cap-broadcast.jpg" alt="Broadcast llave en mano" loading="lazy"><span class="cap-rec mono">REC</span></div>
+        <div class="cap-media" data-tilt><img src="./assets/cap-broadcast.jpg" alt="Broadcast llave en mano" loading="lazy"><span class="cap-rec mono">REC</span></div>
         <h3 data-i18n="cap.4.h">Broadcast llave en mano</h3>
         <p data-i18n="cap.4.p">De la ingeniería al ON AIR: instalación, puesta en marcha y capacitación.</p>
       </article>
@@ -196,7 +198,7 @@
         <li data-i18n="prod.am.s4">Monitoreo y control remoto</li>
       </ul>
     </div>
-    <div class="pstack" aria-hidden="true">
+    <div class="pstack" data-tilt aria-hidden="true">
       <img class="on" src="./assets/stack-am-v1.jpg" alt="" loading="lazy">
       <img src="./assets/stack-am-v2.jpg" alt="" loading="lazy">
       <img src="./assets/stack-am-v3.jpg" alt="" loading="lazy">
@@ -217,7 +219,7 @@
         <li data-i18n="prod.fm.s4">Telemetría en tiempo real</li>
       </ul>
     </div>
-    <div class="pstack" aria-hidden="true">
+    <div class="pstack" data-tilt aria-hidden="true">
       <img class="on" src="./assets/stack-fm-v1.jpg" alt="" loading="lazy">
       <img src="./assets/stack-fm-v2.jpg" alt="" loading="lazy">
       <img src="./assets/stack-fm-v3.jpg" alt="" loading="lazy">
@@ -238,7 +240,7 @@
         <li data-i18n="prod.nx.s4">Cumple normas IMO</li>
       </ul>
     </div>
-    <div class="pstack" aria-hidden="true">
+    <div class="pstack" data-tilt aria-hidden="true">
       <img class="on" src="./assets/stack-nx-v1.jpg" alt="" loading="lazy">
       <img src="./assets/stack-nx-v2.jpg" alt="" loading="lazy">
       <img src="./assets/stack-nx-v3.jpg" alt="" loading="lazy">
@@ -259,7 +261,7 @@
         <li data-i18n="prod.tw.s4">Montaje en terreno extremo</li>
       </ul>
     </div>
-    <div class="pstack" aria-hidden="true">
+    <div class="pstack" data-tilt aria-hidden="true">
       <img class="on" src="./assets/stack-tw-v1.jpg" alt="" loading="lazy">
       <img src="./assets/stack-tw-v2.jpg" alt="" loading="lazy">
       <img src="./assets/stack-tw-v3.jpg" alt="" loading="lazy">
@@ -322,19 +324,19 @@
     </header>
     <div class="htrack" id="htrack">
       <figure class="slide">
-        <div class="slide-media"><img src="./assets/proj-am.jpg" alt="Proyecto AM" loading="lazy"></div>
+        <div class="slide-media" data-tilt><img src="./assets/proj-am.jpg" alt="Proyecto AM" loading="lazy"></div>
         <figcaption><p class="loc mono" data-i18n="proj.1.loc">Chile · Onda media</p><h3 data-i18n="proj.1.h">Planta AM de alta potencia</h3><p data-i18n="proj.1.p">Transmisor, mástil y puesta en ON AIR.</p></figcaption>
       </figure>
       <figure class="slide">
-        <div class="slide-media"><video src="./assets/videos/prop-rapanui.mp4" muted loop playsinline preload="metadata" aria-label="Rapa Nui"></video></div>
+        <div class="slide-media" data-tilt><video src="./assets/videos/prop-rapanui.mp4" muted loop playsinline preload="metadata" aria-label="Rapa Nui"></video></div>
         <figcaption><p class="loc mono" data-i18n="proj.2.loc">Rapa Nui · 3.759 km</p><h3 data-i18n="proj.2.h">Enlace HF más largo del país</h3><p data-i18n="prop.km">3.759 km sobre el Pacífico, 24/7.</p></figcaption>
       </figure>
       <figure class="slide">
-        <div class="slide-media"><img src="./assets/proj-stl.jpg" alt="STL" loading="lazy"></div>
+        <div class="slide-media" data-tilt><img src="./assets/proj-stl.jpg" alt="STL" loading="lazy"></div>
         <figcaption><p class="loc mono" data-i18n="proj.3.loc">Santiago · STL</p><h3 data-i18n="proj.3.h">Enlace estudio–planta</h3><p data-i18n="proj.3.p">Audio digital punto a punto con redundancia.</p></figcaption>
       </figure>
       <figure class="slide">
-        <div class="slide-media"><img src="./assets/hero.jpg" alt="Torre nocturna" loading="lazy"></div>
+        <div class="slide-media" data-tilt><img src="./assets/hero.jpg" alt="Torre nocturna" loading="lazy"></div>
         <figcaption><p class="loc mono" data-i18n="proj.4.loc">Zona costera · Torres</p><h3 data-i18n="proj.4.h">Torres y mástiles a medida</h3><p data-i18n="proj.4.p">Estructuras certificadas para viento y salinidad extremos.</p></figcaption>
       </figure>
     </div>

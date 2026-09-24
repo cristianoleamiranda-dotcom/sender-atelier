@@ -41,7 +41,8 @@
 
 /* ---------- Reset ---------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+@media (max-width: 1000px) { html, body { overflow-x: hidden; } }
 body {
   font-family: var(--fb); font-size: 17px; line-height: 1.7;
   background: var(--ink); color: #fff;
@@ -150,8 +151,9 @@ body.menu-open .menu { opacity: 1; visibility: visible; transition: opacity .4s;
 .hero-stats .stat:first-child { border-left: 0; padding-left: 0; }
 .hero-stats strong { font-family: var(--fd); font-weight: 600; font-size: clamp(26px, 3.2vw, 44px); letter-spacing: -.01em; }
 .hero-stats .mono { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.55); }
-.hero-hint { position: absolute; right: 0; bottom: 34px; font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase; color: rgba(255,255,255,.5); animation: hint 2.4s ease-in-out infinite; }
-@keyframes hint { 50% { transform: translateY(6px); opacity: .9; } }
+.hero-hint { display: none; }
+@media (min-width: 1001px) { .hero-hint { display: block; position: absolute; right: 0; bottom: 34px; font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase; color: rgba(255,255,255,.5); animation: hint 2.4s ease-in-out infinite; }
+@keyframes hint { 50% { transform: translateY(6px); opacity: .9; } } }
 .split .w { display: inline-block; overflow: hidden; vertical-align: bottom; }
 .split .w > span { display: inline-block; }
 
@@ -287,6 +289,8 @@ body.menu-open .menu { opacity: 1; visibility: visible; transition: opacity .4s;
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1000px) {
+  .htrack { width: auto; max-width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; padding-block: 6px 18px; }
+  .slide { scroll-snap-align: center; }
   .nav-links { display: none; }
   .burger { display: block; }
   .prod { grid-template-columns: 1fr; }
@@ -316,3 +320,8 @@ body.menu-open .menu { opacity: 1; visibility: visible; transition: opacity .4s;
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .marq-in { animation: none; }
 }
+
+/* ---------- v1.1 inmersivo: capa WebGL + tilt ---------- */
+#bg3d { position: fixed; inset: 0; z-index: 1; pointer-events: none; mix-blend-mode: screen; opacity: .55; }
+[data-tilt] { transform-style: preserve-3d; will-change: transform; }
+.pstack, .slide-media, .cap-media { perspective: 1000px; }
