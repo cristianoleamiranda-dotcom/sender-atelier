@@ -119,8 +119,16 @@ $$('[data-count]').forEach((el) => {
     trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true,
     onUpdate: (self) => { tgt = self.progress; },
   });
+  const tc = $('#tc');
+  const fmtTC = (t) => {
+    const f = Math.floor((t % 1) * 30);
+    const s = Math.floor(t) % 60, m = Math.floor(t / 60) % 60, h = Math.floor(t / 3600);
+    const p = (x) => String(x).padStart(2, '0');
+    return `${p(h)}:${p(m)}:${p(s)}:${p(f)}`;
+  };
   (function tick() {
     if (ready && v.duration && isFinite(v.duration)) {
+      if (tc) tc.textContent = fmtTC(v.currentTime);
       cur += (tgt - cur) * (reduce ? 1 : 0.12);
       const t = cur * (v.duration - 0.05);
       if (Math.abs(v.currentTime - t) > 0.01) { try { v.currentTime = t; } catch (_) {} }
@@ -290,4 +298,15 @@ if (!reduce) {
   });
   const cb = $('.cover-bg');
   if (cb) gsap.fromTo(cb, { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '.cat-cover', start: 'top bottom', end: 'bottom top', scrub: 0.7 } });
+}
+
+/* ---------- v1.2: botones magnéticos ---------- */
+if (!reduce && matchMedia('(pointer: fine)').matches) {
+  $$('.btn').forEach((b) => {
+    b.addEventListener('pointermove', (e) => {
+      const r = b.getBoundingClientRect();
+      gsap.to(b, { x: (e.clientX - r.left - r.width / 2) * 0.25, y: (e.clientY - r.top - r.height / 2) * 0.3, duration: 0.4, ease: 'power2.out' });
+    });
+    b.addEventListener('pointerleave', () => gsap.to(b, { x: 0, y: 0, duration: 0.8, ease: 'elastic.out(1, 0.4)' }));
+  });
 }
